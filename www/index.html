@@ -12,10 +12,11 @@
         <link rel="import" href="bower_components/core-item/core-item.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+        <link rel="import" href="bower_components/core-icons/hardware-icons.html">
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            app.initialize();
         </script>
         <style>
             html, body {
@@ -70,7 +71,7 @@
             </core-card>
             <paper-toast id="toast1" text="Created by Nic Raboy"></paper-toast>
         </core-scaffold>
-        <paper-fab icon="add" onclick="document.querySelector('#toast1').show()"></paper-fab>
+        <paper-fab icon="hardware:keyboard-voice" onclick="app.recognizeSpeech()"></paper-fab>
     </body>
 </html>
 
