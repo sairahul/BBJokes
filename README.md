@@ -12,4 +12,4 @@ cordova plugin add https://github.com/macdonst/SpeechSynthesisPlugin.git
 
 Screenshot
 ==========
-![ScreenShot](http://static.sairahul.com/tweetsense_1.png)
+![ScreenShot](http://static.sairahul.com/screenshot_bbjokes.png)
