@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Test Project</title>
+        <title>Jokes !</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,6 +13,7 @@
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="bower_components/paper-fab/paper-fab.html">
         <link rel="import" href="bower_components/core-icons/hardware-icons.html">
+        <link rel="import" href="bower_components/core-ajax/core-ajax.html">
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -37,9 +38,9 @@
                 color: rgb(255, 255, 255);
                 background-color: rgb(79, 125, 201);
             }
-            #core_card {
+            .card {
                 width: 96%;
-                height: 300px;
+                height: 80px;
                 border-top-left-radius: 2px;
                 border-top-right-radius: 2px;
                 border-bottom-right-radius: 2px;
@@ -65,13 +66,41 @@
                     <core-item icon="settings" label="item2"></core-item>
                 </core-menu>
             </core-header-panel>
-            <div tool>Test Project</div>
-            <core-card id="core_card" vertical layout start>
-                <div style="padding: 20px;">This is a sample project.  Please share my blog if you've found this useful</div>
+            <div tool>Jokes !</div>
+            <core-card vertical layout start class="card">
+                <div style="padding: 20px;" id="core_card1"> Hello !. Say anything to get a chuck norris Joke !</div>
             </core-card>
-            <paper-toast id="toast1" text="Created by Nic Raboy"></paper-toast>
+
+            <core-card id="core_card" vertical layout class="card" style="height: 200px;">
+            </core-card>
+
         </core-scaffold>
-        <paper-fab icon="hardware:keyboard-voice" onclick="app.recognizeSpeech()"></paper-fab>
+        <paper-fab icon="hardware:keyboard-voice" onclick1="app.addJoke()" onclick="app.recognizeSpeech()"></paper-fab>
+
+        <!-- Custom component that can be used in any other page/app ! -->
+        <polymer-element name="chucknorris-joke">
+          <template>
+            <core-ajax id="ajax" auto url="http://api.icndb.com/jokes/random/" handleAs="json" response="{{response}}" on-core-response1="{{handleResponse}}"></core-ajax>
+            <div style="padding: 20px;">
+                {{response.value.joke}}
+            </div>
+          </template>
+          <script>
+              Polymer('chucknorris-joke', {
+                  auto: true,
+                  ready: function(){
+                      //this.$.ajax.go();
+                  },
+                  handleResponse: function(){
+                      //alert('response');
+                  },
+                  responseChanged: function(){
+                      //alert(this.response);
+                  }
+              });
+          </script>
+        </polymer-element>
+
     </body>
 </html>
 

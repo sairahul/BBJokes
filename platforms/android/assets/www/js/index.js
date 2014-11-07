@@ -36,14 +36,26 @@ var app = {
         //app.receivedEvent('deviceready');
     },
 
+    addJoke: function(){
+        document.querySelector('#core_card').innerHTML = "<chucknorris-joke></chucknorris-joke>";
+    },
+
     recognizeSpeech: function() {
         var maxMatches = 5;
         var promptString = "Speak now"; // optional
         //var language = "en-US";                     // optional
         var language = "en-IN";                     // optional
         window.plugins.speechrecognizer.startRecognize(function(result){
-            alert(result[0]);
+
+            app.addJoke();
+            var u = new SpeechSynthesisUtterance();
+            u.text = "Here is the joke !";
+            u.lang = 'en-US';
+            window.speechSynthesis.speak(u);
+
+            document.querySelector("#core_card1").innerHTML = result[0];
         });
+
     }
 
 };

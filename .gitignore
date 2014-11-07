@@ -8,6 +8,15 @@
 *.so
 *.pyc
 
+# Built application files
+*.apk
+*.ap_
+*.ap_.d
+#
+# Files for the Dalvik VM
+*.dex
+*.dex.d
+
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
